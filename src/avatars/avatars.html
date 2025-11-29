@@ -1,16 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avatars 과제</title>
-  <link rel="shortcut icon" href="/src/assets/favicon/likelion.ico" type="image/x-icon" />
-  <link rel="icon" href="/src/assets/favicon/likelion.svg" />
-  <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT-Regular.woff2">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css">
-  <link rel="stylesheet" href="./styles/avatars.css" />
-</head>
-<body>
-  <!-- 여기에 마크업을 구성해 주세요. -->
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avatars 과제</title>
+    <link rel="shortcut icon" href="/src/assets/favicon/likelion.ico" type="image/x-icon" />
+    <link rel="icon" href="/src/assets/favicon/likelion.svg" />
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT-Regular.woff2" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" />
+    <link rel="stylesheet" href="./styles/avatars.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="sr-only">출석 모니터링 페이지</h1>
+    </header>
+    <nav>
+      <h1 class="sr-only">메뉴</h1>
+      <div class="container">
+        <div class="logo">
+          <a href="/index.html">
+            <img width="50" height="50" src="/src/assets/profiles/seongyoon.jpg" alt="logo" />
+            <span>홈으로</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- 여기에 마크업을 구성해 주세요. -->
+    <!-- cotainer은 화면이 구성되는 넓이입니다. -->
+    <!-- studentContainer은 출석정보가 들어가는 공간입니다 -->
+    <!-- attendence 출석을 줄여서 attd로 클래스 이름을 정했습니다. 미출석은 unAttd로 표현했습니다 -->
+    <!-- 기본값은 미출석이며 active 클래스가 추가되는 것을 통해 상태가 보일 수 있게 작성했습니다 -->
+    <!-- 출석정보는 list형태로 나타냈습니다. 순서나 정의를 하는게 아니기 때문에 ul태그가 적당하다고 생각했습니다 -->
+    <!-- img는 css보다 태그내부에서 width와 높이 값을 주는게 더 효율적이기 때문에 넣었습니다.>레이아웃 밀림 방지, 검색엔진 긍정적, 더 빠른 이미지 렌더링 이유 -->
+    <!-- card정보에는 학생의 사진 alt값이 있기때문에 aria-labeledby는 생략했습니다.그리고 눈으로 보여주기위한 workState와 웹 접근성을 위한 p태그를 넣었습니다-->
+    <!-- 궁금한 점 출석 미출석을 js로 바꿔도 스크린 리더에서 잘 읽어줄 수 있을 지 궁금합니다 -->
+
+    <main>
+      <div class="container">
+        <h1 class="sr-only">출석 모니터링</h1>
+        <section>
+          <h2 class="sr-only">출석 현황</h2>
+          <div class="studentContainer">
+            <ul class="studentWrap">
+              <li class="studentCard">
+                <div class="studentImage">
+                  <img width="64" height="64" aria-describedby="working1" src="./images/face1.jpg" alt="학생1" />
+                </div>
+                <div class="workState">
+                  <p class="sr-only unAttd" id="working1">미출석</p>
+                </div>
+              </li>
+              <li class="studentCard">
+                <div class="studentImage">
+                  <img width="64" height="64" src="./images/face2.jpg" alt="학생2" />
+                </div>
+                <div class="workState active">
+                  <p class="sr-only attd" id="working2">출석</p>
+                </div>
+              </li>
+              <li class="studentCard">
+                <div class="studentImage">
+                  <img width="64" height="64" src="./images/face3.jpg" alt="학생3" />
+                </div>
+                <div class="workState">
+                  <p class="sr-only unAttd" id="working3">미출석</p>
+                </div>
+              </li>
+              <li class="studentCard">
+                <div class="studentImage">
+                  <img width="64" height="64" src="./images/face4.jpg" alt="학생4" />
+                </div>
+                <div class="workState active">
+                  <p class="sr-only attd" id="working4">출석</p>
+                </div>
+              </li>
+              <li class="studentCard">
+                <div class="studentImage"><img width="64" height="64" src="./images/face5.jpg" alt="학생5" /></div>
+                <div class="workState active">
+                  <p class="sr-only attd" id="working5">출석</p>
+                </div>
+              </li>
+              <li class="studentCard">
+                <div class="studentImage"><img width="64" height="64" src="./images/face6.jpg" alt="학생6" /></div>
+                <div class="workState active">
+                  <p class="sr-only attd" id="working6">출석</p>
+                </div>
+              </li>
+              <li class="studentCard">
+                <div class="studentImage"><img width="64" height="64" src="./images/face7.jpg" alt="학생7" /></div>
+                <div class="workState">
+                  <p class="sr-only unAttd" id="working7">미출석</p>
+                </div>
+              </li>
+              <li class="studentCard">
+                <div class="studentImage">
+                  <img width="64" height="64" src="./images/face8.jpg" alt="학생8" />
+                </div>
+                <div class="workState">
+                  <p class="sr-only unAttd" id="working8">미출석</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
 </html>
