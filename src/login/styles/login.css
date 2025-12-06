@@ -1,1 +1,202 @@
 /* CSS를 활용하여 레이아웃 및 스타일링을 완성해주세요 */
+
+/* css 공통 영역 */
+@font-face {
+  font-family: 'SpokaHanSansNeo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
+}
+
+:root {
+  --sm-logo-w: 163px;
+  --sm-logo-h: 32px;
+  --lg-logo-w: 230px;
+  --lg-logo-h: 54px;
+
+  --sm-login-w: 100%;
+  --lg-login-w: 500px;
+
+  --fix-input-h: 48px;
+  --fix-button-h: 56px;
+
+  --danger-color: #e00;
+  font-size: 16px;
+  color: #121212;
+  font-family: 'SpokaHanSansNeo', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+p,
+a,
+ul,
+li,
+label,
+input,
+button,
+div,
+form {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 20px;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #121212;
+}
+
+button {
+  border: none;
+}
+
+input {
+  font-size: 0.875rem;
+  height: 2.8125rem;
+  outline: 1px solid #dadada;
+  background-color: #fff;
+  border: none;
+}
+
+input:focus {
+  outline: 1px solid #03cf5d;
+  background-color: #e9f0fd;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* header */
+
+header {
+  text-align: center;
+  margin: 4.375rem auto 3.375rem;
+
+  svg.logo {
+    width: var(--sm-logo-w);
+    height: var(--sm-logo-h);
+  }
+}
+
+/* 로그인 폼 */
+.loginFormContainer {
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    ul {
+      width: 100%;
+
+      .pwWrapper {
+        margin-top: 0.625rem;
+      }
+      /* 아이디 비밀번호 */
+      .userIdWrapper input,
+      .pwWrapper input {
+        display: block;
+        width: 100%;
+        height: var(--fix-input-h);
+      }
+
+      .warning {
+        color: var(--danger-color);
+        font-size: 0.8125rem;
+        margin-left: 1em;
+        display: none;
+      }
+
+      #userId:invalid:not(:placeholder-shown) ~ .idWarning,
+      #pw:invalid:not(:placeholder-shown) + .pwWarning {
+        display: block;
+      }
+      #userId:valid ~ .idWarning,
+      #pw:valid + .pwWarning {
+        display: none;
+      }
+    }
+  }
+  /* 전송 버튼 */
+  .loginBtn {
+    width: 100%;
+    height: var(--fix-button-h);
+    background-color: #03cf5d;
+    margin-top: 1.25rem;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  /* 자동로그인 및 ip보안 */
+  li.subContainer ul.subWrapper {
+    margin-top: 0.625rem;
+    display: flex;
+    justify-content: end;
+    order: 1;
+
+    li:last-child {
+      display: none;
+    }
+    .autoLogin,
+    .saftyWrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    /* 자동로그인 */
+    .autoLogin input[type='checkbox'] {
+      width: 1.5em;
+      height: 1.5em;
+      background-image: url('./uncheck.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+    }
+
+    .autoLogin input[type='checkbox']:checked {
+      background-image: url('./checked.svg');
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  header svg.logo {
+    width: var(--lg-logo-w);
+    height: var(--lg-logo-h);
+  }
+
+  main .loginFormContainer {
+    form {
+      width: var(--lg-login-w);
+      margin: 0 auto;
+
+      ul li.subContainer ul.subWrapper {
+        justify-content: space-between;
+
+        li:last-child {
+          display: block;
+        }
+      }
+    }
+  }
+}
