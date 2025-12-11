@@ -124,11 +124,11 @@ header {
         display: none;
       }
 
-      #userId:invalid:not(:placeholder-shown) ~ .idWarning,
+      #userId:invalid:not(:placeholder-shown) + .idWarning,
       #pw:invalid:not(:placeholder-shown) + .pwWarning {
         display: block;
       }
-      #userId:valid ~ .idWarning,
+      #userId:valid + .idWarning,
       #pw:valid + .pwWarning {
         display: none;
       }
